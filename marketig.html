@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="L'Essence Studio offers digital marketing for perfume brands.">
+    <title>L'Essence Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #b22222;
+        }
+
+        header {
+            background-color: #d3c8a7;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #b22222;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #8b1a1a;
+        }
+
+        nav a:focus {
+            outline: 2px solid #b22222;
+            outline-offset: 2px;
+        }
+
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-images {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            display: block;
+            max-width: 100%;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(178, 34, 34, 0.8);
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-button:hover {
+            background-color: #8b1a1a;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #ffffff;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            z-index: 5;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .description-box {
+            display: none;
+            background-color: #ffffff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .description-box.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .description-content h4 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #b22222;
+            text-align: center;
+        }
+
+        .description-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #000000;
+            text-align: center;
+        }
+
+        .close-description {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            color: #b22222;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-description:hover {
+            color: #8b1a1a;
+        }
+
+        .cta {
+            text-align: center;
+            background-color: #d3c8a7;
+            padding: 40px 20px;
+            border-radius: 10px;
+        }
+
+        .cta a {
+            background-color: #b22222;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+
+        .cta a:hover {
+            background-color: #8b1a1a;
+        }
+
+        footer {
+            background-color: #d3c8a7;
+            padding: 20px;
+            text-align: center;
+            color: #b22222;
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .feature-card {
+                width: 100%;
+            }
+
+            .carousel-button {
+                padding: 8px;
+                font-size: 1.2em;
+            }
+
+            .description-box {
+                padding: 15px;
+            }
+
+            .description-content h4 {
+                font-size: 1.5em;
+            }
+
+            .description-content p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <h1>L'Essence Studio</h1>
+    </header>
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="http://127.0.0.1:3000/feira.html">Home</a>
+        <a href="http://127.0.0.1:3000/design.html">Design de Sites</a>
+        <a href="http://127.0.0.1:3000/branding.html">Branding</a>
+        <a href="http://127.0.0.1:3000/marketig.html">Marketing Digital</a>
+        <a href="http://127.0.0.1:3000/contatos.html">Contato</a>
+        <a href="http://127.0.0.1:3000/nos.html">sobre nós</a>
+    </nav>
+    <section class="hero">
+        <div class="carousel" role="region" aria-label="Image carousel">
+            <div class="carousel-images">
+                <div class="carousel-images">
+                    <img src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4" alt="Luxury perfume bottle on elegant background">
+                    <img src="imagens/mp.png" alt="Perfume bottle with floral accents">
+                    <img src="imagens/perfumes 3.png" alt="Minimalist perfume bottle display">
+                    <img src="imagens/site.png" alt="Perfume bottle with golden details">
+                    <img src="imagens/mulher2.png" alt="Elegant perfume bottle on silk fabric">
+                </div>
+            </div>
+            <button class="carousel-button prev" aria-label="Previous image">❮</button>
+            <button class="carousel-button next" aria-label="Next image">❯</button>
+            <div class="carousel-dots">
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+            </div>
+        </div>
+        <h2>Marketing Digital</h2>
+    </section>
+    <section class="content">
+        <h3>Serviços</h3>
+        <div class="features">
+            <div class="feature-card" data-type="ads" tabindex="0">
+                <h4>Campanhas Publicitárias</h4>
+                <p>Anúncios para atrair clientes.</p>
+            </div>
+            <div class="feature-card" data-type="social" tabindex="0">
+                <h4>Redes Sociais</h4>
+                <p>Conteúdo para engajar o público.</p>
+            </div>
+            <div class="feature-card" data-type="email" tabindex="0">
+                <h4>E-mail Marketing</h4>
+                <p>Estratégias para fidelizar clientes.</p>
+            </div>
+        </div>
+        <div class="description-box" role="region" aria-live="polite">
+            <div class="description-content">
+                <h4 id="description-title"></h4>
+                <p id="description-text"></p>
+                <button class="close-description" aria-label="Fechar descrição">✕</button>
+            </div>
+        </div>
+        <div class="cta">
+            <h3>Promova Sua Marca</h3>
+            <a href="#contact">Fale Conosco</a>
+        </div>
+    </section>
+    <footer>
+        <p>© <span id="year"></span> L'Essence Studio</p>
+    </footer>
+    <script>
+        // Dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Carousel functionality
+        const carouselImages = document.querySelector('.carousel-images');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        const totalImages = 5;
+
+        function updateCarousel() {
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
+
+        nextButton.addEventListener('click', nextImage);
+        prevButton.addEventListener('click', prevImage);
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = parseInt(dot.dataset.index);
+                updateCarousel();
+            });
+        });
+
+        let autoSlide = setInterval(nextImage, 5000);
+        carouselImages.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        carouselImages.addEventListener('mouseleave', () => autoSlide = setInterval(nextImage, 5000));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
+
+        updateCarousel();
+
+        // Description box functionality
+        const featureCards = document.querySelectorAll('.feature-card');
+        const descriptionBox = document.querySelector('.description-box');
+        const descriptionTitle = document.querySelector('#description-title');
+        const descriptionText = document.querySelector('#description-text');
+        const closeDescriptionButton = document.querySelector('.close-description');
+
+        const descriptions = {
+            ads: {
+                title: 'Campanhas Publicitárias',
+                text: 'Criamos anúncios direcionados para atrair consumidores e destacar sua marca de perfumes.'
+            },
+            social: {
+                title: 'Redes Sociais',
+                text: 'Desenvolvemos conteúdo envolvente para engajar seu público nas redes sociais.'
+            },
+            email: {
+                title: 'E-mail Marketing',
+                text: 'Estratégias personalizadas de e-mail para fidelizar clientes e fortalecer sua marca.'
+            }
+        };
+
+        function showDescription(type) {
+            descriptionTitle.textContent = descriptions[type].title;
+            descriptionText.textContent = descriptions[type].text;
+            descriptionBox.classList.add('active');
+        }
+
+        function hideDescription() {
+            descriptionBox.classList.remove('active');
+        }
+
+        featureCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const type = card.dataset.type;
+                showDescription(type);
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const type = card.dataset.type;
+                    showDescription(type);
+                }
+            });
+        });
+
+        closeDescriptionButton.addEventListener('click', hideDescription);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && descriptionBox.classList.contains('active')) {
+                hideDescription();
+            }
+        });
+    </script>
+</body>
+</html>

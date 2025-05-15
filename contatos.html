@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact L'Essence Studio for digital solutions for perfume brands.">
+    <title>L'Essence Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #b22222;
+        }
+
+        header {
+            background-color: #d3c8a7;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #b22222;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #8b1a1a;
+        }
+
+        nav a:focus {
+            outline: 2px solid #b22222;
+            outline-offset: 2px;
+        }
+
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-images {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            display: block;
+            max-width: 100%;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(178, 34, 34, 0.8);
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-button:hover {
+            background-color: #8b1a1a;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #ffffff;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            z-index: 5;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .contact-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #000000;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #b22222;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form .error {
+            color: #b22222;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .contact-form .error.active {
+            display: block;
+        }
+
+        .contact-form button {
+            background-color: #b22222;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #8b1a1a;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #b22222;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #8b1a1a;
+        }
+
+        .cta {
+            text-align: center;
+            background-color: #d3c8a7;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .cta a {
+            background-color: #b22222;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+
+        .cta a:hover {
+            background-color: #8b1a1a;
+        }
+
+        footer {
+            background-color: #d3c8a7;
+            padding: 20px;
+            text-align: center;
+            color: #b22222;
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+
+            .carousel-button {
+                padding: 8px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <h1>L'Essence Studio</h1>
+    </header>
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="http://127.0.0.1:3000/feira.html">Home</a>
+        <a href="http://127.0.0.1:3000/design.html">Design de Sites</a>
+        <a href="http://127.0.0.1:3000/index.html">Branding</a>
+        <a href="http://127.0.0.1:3000/marketig.html">Marketing Digital</a>
+        <a href="http://127.0.0.1:3000/contatos.html">Contato</a>
+        <a href="http://127.0.0.1:3000/nos.html">sobre nós</a>
+    </nav>
+    <section class="hero">
+        <div class="carousel" role="region" aria-label="Image carousel">
+            <div class="carousel-images">
+                <div class="carousel-images">
+                    <img src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4" alt="Luxury perfume bottle on elegant background">
+                    <img src="imagens/mp.png" alt="Perfume bottle with floral accents">
+                    <img src="imagens/perfumes 3.png" alt="Minimalist perfume bottle display">
+                    <img src="imagens/site.png" alt="Perfume bottle with golden details">
+                    <img src="imagens/mulher2.png" alt="Elegant perfume bottle on silk fabric">
+                </div>
+            </div>
+            <button class="carousel-button prev" aria-label="Previous image">❮</button>
+            <button class="carousel-button next" aria-label="Next image">❯</button>
+            <div class="carousel-dots">
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+            </div>
+        </div>
+        <h2>Contato</h2>
+    </section>
+    <section class="content">
+        <h3>Fale Conosco</h3>
+        <form class="contact-form" id="contact-form" role="form" aria-label="Formulário de contato">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required aria-required="true">
+            <span class="error" id="name-error">Por favor, insira seu nome.</span>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required aria-required="true">
+            <span class="error" id="email-error">Por favor, insira um e-mail válido.</span>
+            <label for="subject">Assunto</label>
+            <input type="text" id="subject" name="subject" required aria-required="true">
+            <span class="error" id="subject-error">Por favor, insira o assunto.</span>
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" required aria-required="true"></textarea>
+            <span class="error" id="message-error">Por favor, insira sua mensagem.</span>
+            <button type="submit">Enviar</button>
+        </form>
+        <div class="contact-info">
+            <p>E-mail: <a href="mailto:contato@lessencestudio.com">contato@lessencestudio.com</a></p>
+            <p>Telefone: <a href="tel:+5511999999999">+55 11 98200-9090</a></p>
+        </div>
+        <div class="cta">
+            <h3>Entre em Contato</h3>
+            <a href="#contact-form">Envie Sua Mensagem</a>
+        </div>
+    </section>
+    <footer>
+        <p>© <span id="year"></span> L'Essence Studio</p>
+    </footer>
+    <script>
+        // Dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Carousel functionality
+        const carouselImages = document.querySelector('.carousel-images');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        const totalImages = 5;
+
+        function updateCarousel() {
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
+
+        nextButton.addEventListener('click', nextImage);
+        prevButton.addEventListener('click', prevImage);
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = parseInt(dot.dataset.index);
+                updateCarousel();
+            });
+        });
+
+        let autoSlide = setInterval(nextImage, 5000);
+        carouselImages.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        carouselImages.addEventListener('mouseleave', () => autoSlide = setInterval(nextImage, 5000));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
+
+        updateCarousel();
+
+        // Form validation and submission
+        const form = document.getElementById('contact-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const subjectInput = document.getElementById('subject');
+        const messageInput = document.getElementById('message');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const subjectError = document.getElementById('subject-error');
+        const messageError = document.getElementById('message-error');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let hasError = false;
+
+            // Reset error messages
+            nameError.classList.remove('active');
+            emailError.classList.remove('active');
+            subjectError.classList.remove('active');
+            messageError.classList.remove('active');
+
+            // Validate fields
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const subject = subjectInput.value.trim();
+            const message = messageInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!name) {
+                nameError.classList.add('active');
+                hasError = true;
+            }
+            if (!email) {
+                emailError.textContent = 'Por favor, insira seu e-mail.';
+                emailError.classList.add('active');
+                hasError = true;
+            } else if (!emailRegex.test(email)) {
+                emailError.textContent = 'Por favor, insira um e-mail válido.';
+                emailError.classList.add('active');
+                hasError = true;
+            }
+            if (!subject) {
+                subjectError.classList.add('active');
+                hasError = true;
+            }
+            if (!message) {
+                messageError.classList.add('active');
+                hasError = true;
+            }
+
+            if (!hasError) {
+                // Placeholder for form submission
+                console.log('Formulário enviado:', { name, email, subject, message });
+                alert('Mensagem enviada com sucesso!');
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça a L'Essence Studio, sua parceira em web design elegante para marcas de perfumes.">
+    <title>Sobre Nós - L'Essence Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #b22222;
+        }
+
+        header {
+            background-color: #d3c8a7;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #b22222;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #8b1a1a;
+        }
+
+        nav a:focus {
+            outline: 2px solid #b22222;
+            outline-offset: 2px;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .feature-card p {
+            font-size: 1em;
+            color: #000000;
+        }
+
+        .summary {
+            display: none;
+            background-color: #ffffff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #000000;
+            text-align: center;
+        }
+
+        .summary.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .read-more {
+            color: #b22222;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .read-more:hover {
+            color: #8b1a1a;
+        }
+
+        .description-box {
+            display: none;
+            background-color: #ffffff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .description-box.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .description-content h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #b22222;
+            text-align: center;
+        }
+
+        .description-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #000000;
+            text-align: center;
+        }
+
+        .close-description {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            color: #b22222;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-description:hover {
+            color: #8b1a1a;
+        }
+
+        .cta {
+            text-align: center;
+            background-color: #d3c8a7;
+            padding: 40px 20px;
+            border-radius: 10px;
+        }
+
+        .cta a {
+            background-color: #b22222;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+
+        .cta a:hover {
+            background-color: #8b1a1a;
+        }
+
+        footer {
+            background-color: #d3c8a7;
+            padding: 20px;
+            text-align: center;
+            color: #b22222;
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            .content h2 {
+                font-size: 2em;
+            }
+
+            .feature-card {
+                width: 100%;
+            }
+
+            .summary {
+                font-size: 0.85em;
+                padding: 8px;
+            }
+
+            .description-box {
+                padding: 15px;
+            }
+
+            .description-content h3 {
+                font-size: 1.5em;
+            }
+
+            .description-content p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <h1>L'Essence Studio</h1>
+    </header>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="http://127.0.0.1:3000/feira.html">Home</a>
+      <a href="http://127.0.0.1:3000/design.html">Design de Sites</a>
+      <a href="http://127.0.0.1:3000/branding.html">Branding</a>
+      <a href="http://127.0.0.1:3000/marketig.html">Marketing Digital</a>
+      <a href="http://127.0.0.1:3000/contatos.html">Contato</a>
+      <a href="http://127.0.0.1:3000/nos.html">sobre nós</a>
+    </nav>
+    <section class="content">
+        <h2>Sobre Nós</h2>
+        <p>Somos a L'Essence Studio, uma equipe apaixonada por criar experiências digitais elegantes e funcionais para marcas de perfumes. Nosso objetivo é transformar sua visão em sites que encantam e convertem.</p>
+        <div class="features">
+            <div class="feature-card" data-type="mission" tabindex="0">
+                <h3>Nossa Missão</h3>
+                <p>Elevando marcas através de design sofisticado.</p>
+                <div class="summary" role="region" aria-live="polite">
+                    <p>Criamos sites que capturam a essência das marcas de perfumes.</p>
+                    <span class="read-more" tabindex="0">Leia Mais</span>
+                </div>
+            </div>
+            <div class="feature-card" data-type="team" tabindex="0">
+                <h3>Nosso Time</h3>
+                <p>Especialistas dedicados ao seu sucesso digital.</p>
+                <div class="summary" role="region" aria-live="polite">
+                    <p>Uma equipe apaixonada por design e tecnologia.</p>
+                    <span class="read-more" tabindex="0">Leia Mais</span>
+                </div>
+            </div>
+            <div class="feature-card" data-type="values" tabindex="0">
+                <h3>Nossos Valores</h3>
+                <p>Inovação, qualidade e compromisso com o cliente.</p>
+                <div class="summary" role="region" aria-live="polite">
+                    <p>Compromisso com inovação e excelência.</p>
+                    <span class="read-more" tabindex="0">Leia Mais</span>
+                </div>
+            </div>
+        </div>
+        <div class="description-box" role="region" aria-live="polite">
+            <div class="description-content">
+                <h3 id="description-title"></h3>
+                <p id="description-text"></p>
+                <button class="close-description" aria-label="Fechar descrição">✕</button>
+            </div>
+        </div>
+        <div class="cta">
+            <h3>Junte-se a Nós</h3>
+            <a href="http://127.0.0.1:3000/contatos.html">Fale Conosco</a>
+        </div>
+    </section>
+    <footer>
+        <p>© <span id="year"></span> L'Essence Studio</p>
+    </footer>
+    <script>
+        // Dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Description and summary functionality
+        const featureCards = document.querySelectorAll('.feature-card');
+        const descriptionBox = document.querySelector('.description-box');
+        const descriptionTitle = document.querySelector('#description-title');
+        const descriptionText = document.querySelector('#description-text');
+        const closeDescriptionButton = document.querySelector('.close-description');
+
+        const descriptions = {
+            mission: {
+                title: 'Nossa Missão',
+                summary: 'Criamos sites que capturam a essência das marcas de perfumes.',
+                text: 'Nossa missão é criar websites que refletem a essência única de cada marca de perfume, combinando design sofisticado com funcionalidade impecável para elevar a presença digital dos nossos clientes.'
+            },
+            team: {
+                title: 'Nosso Time',
+                summary: 'Uma equipe apaixonada por design e tecnologia.',
+                text: 'Contamos com uma equipe de designers, desenvolvedores e estrategistas apaixonados, trabalhando juntos para entregar soluções digitais que superam as expectativas e geram resultados.'
+            },
+            values: {
+                title: 'Nossos Valores',
+                summary: 'Compromisso com inovação e excelência.',
+                text: 'Nosso trabalho é guiado pela inovação, pela busca incessante por qualidade e por um compromisso profundo com a satisfação dos nossos clientes, sempre com transparência e criatividade.'
+            }
+        };
+
+        function showSummary(card) {
+            // Hide all summaries
+            document.querySelectorAll('.summary').forEach(summary => {
+                summary.classList.remove('active');
+            });
+            // Show summary for the clicked card
+            const summary = card.querySelector('.summary');
+            summary.classList.add('active');
+        }
+
+        function hideSummary() {
+            document.querySelectorAll('.summary').forEach(summary => {
+                summary.classList.remove('active');
+            });
+        }
+
+        function showDescription(type) {
+            descriptionTitle.textContent = descriptions[type].title;
+            descriptionText.textContent = descriptions[type].text;
+            descriptionBox.classList.add('active');
+            hideSummary(); // Hide summary when showing full description
+        }
+
+        function hideDescription() {
+            descriptionBox.classList.remove('active');
+        }
+
+        featureCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const type = card.dataset.type;
+                const summary = card.querySelector('.summary');
+                if (!summary.classList.contains('active')) {
+                    showSummary(card);
+                }
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const type = card.dataset.type;
+                    const summary = card.querySelector('.summary');
+                    if (!summary.classList.contains('active')) {
+                        showSummary(card);
+                    }
+                }
+            });
+
+            // Handle "Read More" click
+            const readMore = card.querySelector('.read-more');
+            readMore.addEventListener('click', () => {
+                const type = card.dataset.type;
+                showDescription(type);
+            });
+
+            readMore.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const type = card.dataset.type;
+                    showDescription(type);
+                }
+            });
+        });
+
+        closeDescriptionButton.addEventListener('click', hideDescription);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                hideDescription();
+                hideSummary();
+            }
+        });
+    </script>
+</body>
+</html>

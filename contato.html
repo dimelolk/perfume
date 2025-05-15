@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Essence Studio - Sites com Sofisticação</title>
+  <script src="Gemini_Generated_Image_8u0niq8u0niq8u0n.png"></script>
+  <script src="imagens/mulher.png"></script>
+  <script src="imagens/perfume.png"></script>
+  <script src="imagens/site.png"></script>
+  <link href="imagens/mp.png" rel="stylesheet">
+  <style>
+    body { 
+      background-color: #f5f5dc; 
+      font-family: 'Poppins', sans-serif; 
+      color: #4a3832; 
+    }
+    .smooth-scroll { scroll-behavior: smooth; }
+    .hover-scale { transition: transform 0.3s ease; }
+    .hover-scale:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body class="smooth-scroll">
+  <div id="root"></div>
+  <script type="text/babel">
+    const HeroSection = () => (
+      <section className="min-h-screen flex items-center justify-center text-center bg-gradient-to-b from-beige-300 to-beige-100">
+        <div className="container mx-auto px-6">
+          <h1 className="text-5xl font-bold mb-4 text-brown-800">Experiências Digitais com Essência</h1>
+          <p className="text-xl mb-6">Criamos sites inspiradores que capturam a alma de sua marca de perfumes.</p>
+          <a href="#contact" className="bg-brown-800 text-white px-6 py-3 rounded hover:bg-brown-700">
+            Solicite um Orçamento
+          </a>
+        </div>
+      </section>
+    );
+
+    const ServicesSection = () => (
+      <section id="services" className="py-20 bg-beige-100">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-10">Nossos Serviços</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md hover-scale">
+              <h3 className="text-2xl font-semibold mb-4">Sites Personalizados</h3>
+              <p>Designs exclusivos que refletem a identidade olfativa da sua marca.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md hover-scale">
+              <h3 className="text-2xl font-semibold mb-4">E-commerce de Perfumes</h3>
+              <p>Plataformas intuitivas para uma experiência de compra sofisticada.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md hover-scale">
+              <h3 className="text-2xl font-semibold mb-4">SEO & Performance</h3>
+              <p>Otimização para motores de busca e carregamento ultrarrápido.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const ContactSection = () => (
+      <section id="contact" className="py-20 bg-beige-200">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-10">Entre em Contato</h2>
+          <div className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
+            <div className="space-y-4">
+              <input type="text" placeholder="Nome" className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-brown-800"/>
+              <input type="email" placeholder="E-mail" className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-brown-800"/>
+              <textarea placeholder="Mensagem" className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-brown-800" rows="4"></textarea>
+              <button className="w-full bg-brown-800 text-white p-3 rounded hover:bg-brown-700">
+                Enviar Mensagem
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const App = () => (
+      <div className="font-sans text-gray-800">
+        <HeroSection />
+        <ServicesSection />
+        <ContactSection />
+      </div>
+    );
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

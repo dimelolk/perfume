@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Essence Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #b22222;
+        }
+
+        header {
+            background-color: #d3c8a7;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #b22222;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #8b1a1a;
+        }
+
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-images {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            display: block;
+            max-width: 100%;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(178, 34, 34, 0.8);
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-button:hover {
+            background-color: #8b1a1a;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #ffffff;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            z-index: 5;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .service-card a {
+            color: #000000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .service-card a:hover {
+            color: #b22222;
+        }
+
+        footer {
+            background-color: #d3c8a7;
+            padding: 20px;
+            text-align: center;
+            color: #b22222;
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .service-card {
+                width: 100%;
+            }
+
+            .carousel-button {
+                padding: 8px;
+                font-size: 1.2em;
+            }
+        }
+    </style> 
+</head>
+<body>
+    <header>
+        <h1>L'Essence Studio</h1>
+    </header>
+    <nav>
+        <a href="http://127.0.0.1:3000/feira.html">Home</a>
+        <a href="http://127.0.0.1:3000/design.html">Serviços</a>
+        <a href="http://127.0.0.1:3000/nos.html">sobre nós</a>
+        <a href="http://127.0.0.1:3000/contatos.html">Contato</a>
+    </nav>
+    <section class="hero">
+        <div class="carousel" role="region" aria-label="Image carousel">
+            <div class="carousel-images">
+                <img src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4" alt="Luxury perfume bottle on elegant background">
+                <img src="imagens/mp.png" alt="Perfume bottle with floral accents">
+                <img src="imagens/perfumes 3.png" alt="Minimalist perfume bottle display">
+                <img src="imagens/site.png" alt="Perfume bottle with golden details">
+                <img src="imagens/mulher2.png" alt="Elegant perfume bottle on silk fabric">
+            </div>
+            <button class="carousel-button prev" aria-label="Previous image">❮</button>
+            <button class="carousel-button next" aria-label="Next image">❯</button>
+            <div class="carousel-dots">
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+            </div>
+        </div>
+        <h2>Sua Marca Única</h2>
+    </section>
+    <section class="content">
+        <h3>Serviços</h3>
+        <div class="services">
+            <div class="service-card">
+                <h4><a href="http://127.0.0.1:3000/design.html">Design de Sites</a></h4>
+                <p>Sites modernos para marcas de perfumes.</p>
+            </div>
+            <div class="service-card">
+                <h4><a href="http://127.0.0.1:3000/marketig.html">Branding</a></h4>
+                <p>Identidades visuais únicas para perfumes.</p>
+            </div>
+            <div class="service-card">
+                <h4><a href="http://127.0.0.1:3000/marketig.html">Marketing Digital</a></h4>
+                <p>Estratégias para promover sua marca.</p>
+            </div>
+        </div>
+        <h3>Sobre Nós</h3>
+        <p>L'Essence Studio cria experiências digitais para marcas de perfumes, unindo design sofisticado e tecnologia.</p>
+    </section>
+    <footer>
+        <p>© <span id="year"></span> L'Essence Studio</p>
+    </footer>
+    <script>
+        // Dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Carousel functionality
+        const carouselImages = document.querySelector('.carousel-images');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        const totalImages = 5;
+
+        function updateCarousel() {
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
+
+        nextButton.addEventListener('click', nextImage);
+        prevButton.addEventListener('click', prevImage);
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = parseInt(dot.dataset.index);
+                updateCarousel();
+            });
+        });
+
+        let autoSlide = setInterval(nextImage, 5000);
+        carouselImages.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        carouselImages.addEventListener('mouseleave', () => autoSlide = setInterval(nextImage, 5000));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
+
+        updateCarousel();
+    </script>
+</body>
+</html>
